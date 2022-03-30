@@ -8,10 +8,10 @@ The basic steps are:
 ## Create the installation media
 There are plenty of better places to find information on how to do this so I'm keeping this short and only addressing using the ```dd``` command to write the ISO image to a file.
 1. Download the ISO image you want to install:
-    - [CentOS 8.2 boot ISO](http://distro.ibiblio.org/centos/8.2.2004/isos/x86_64/CentOS-8.2.2004-x86_64-boot.iso)
+    - [Rocky 8.5 boot ISO](https://download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8.5-x86_64-boot.iso)
     - [Debian 10.5.0 netinst ISO](https://cdimage.debian.org/mirror/cdimage/archive/10.5.0/amd64/iso-cd/debian-10.5.0-amd64-netinst.iso)
 2. View the checksum for the ISO file you downloaded
-    - [CentOS 8.2 CHECKSUM](http://distro.ibiblio.org/centos/8.2.2004/isos/x86_64/CHECKSUM)
+    - [Rocky 8.5 CHECKSUM](https://download.rockylinux.org/pub/rocky/8/isos/x86_64/CHECKSUM)
     - [Debian SHA256SUMS](https://cdimage.debian.org/mirror/cdimage/archive/10.5.0/amd64/iso-cd/SHA256SUMS)
 3. Calculate the checksum on the ISO file you downloaded and compare it to the checksum in step 2.
     > On Linux:  
@@ -38,12 +38,12 @@ There are plenty of better places to find information on how to do this so I'm k
 The network installing ISO images are fairly small so the ```dd``` command should not take long.  Note, you can use send SIGINFO to the PID of ```dd``` on Mac OS X to get it to dump its status to STDOUT.
 
 ## Install the host using distribution specific automation
-**NOTE: The CentOS kickstart files and Debian preseed files shown here do NOT automate disk partioning to allow for flexible installations (such as dual-booting with other operating systems).  You should, however, still know what you are doing and, if losing everything on your disk would be a problem for you, you should have good backups just in case you make a mistake or there is a bug in the files.  The other CentOS kickstart files in this directory WILL remove any current drive contents so don't use them unless you know what you're doing.**
+**NOTE: The Rocky kickstart files and Debian preseed files shown here do NOT automate disk partioning to allow for flexible installations (such as dual-booting with other operating systems).  You should, however, still know what you are doing and, if losing everything on your disk would be a problem for you, you should have good backups just in case you make a mistake or there is a bug in the files.  The other Rocky kickstart files in this directory WILL remove any current drive contents so don't use them unless you know what you're doing.**
 
-### CentOS
-Boot from the installation media, use the cursor keys to highlight the menu option to install CentOS, and press 'e' __instead of pressing return__ so you can edit the menu option (the keys to press are displayed at the bottom of the screen in case you forget).  Use the cursor keys to go down to the line beginning with "linux" and use Ctrl-e to jump to the end of that line.  Once there, add the following to the end of the line:
+### Rocky
+Boot from the installation media, use the cursor keys to highlight the menu option to install Rocky, and press 'e' __instead of pressing return__ so you can edit the menu option (the keys to press are displayed at the bottom of the screen in case you forget).  Use the cursor keys to go down to the line beginning with "linux" and use Ctrl-e to jump to the end of that line.  Once there, add the following to the end of the line:
 ```
-inst.ks=https://raw.githubusercontent.com/dmbrownlee/ks/release/CentOS/ks.cfg
+inst.ks=https://raw.githubusercontent.com/dmbrownlee/ks/release/Rocky/ks.cfg
 ```
 Then press Ctrl-x (as displayed at the bottom of the screen) to begin the installation.
 
